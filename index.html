@@ -1,0 +1,145 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Special Surprise ❤️</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  min-height: 100%;
+  background: #100407;
+}
+
+#surprise {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+}
+
+.poster {
+  position: relative;
+  display: inline-block;
+  line-height: 0;
+  max-width: 100%;
+}
+
+.poster img {
+  display: block;
+  max-width: 100%;
+  max-height: 96vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+#nextBtn {
+  position: absolute;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+</style>
+</head>
+
+<body>
+
+<div id="surprise">
+  <div class="poster">
+    <img id="posterImg" alt="Our special surprise">
+    <button id="nextBtn" aria-label="Next page"></button>
+  </div>
+</div>
+
+<script>
+const pages = [
+
+  // PAGE 1
+  {
+    src: "https://i.ibb.co/SwkWs0NM/C1168103-A596-4-C1-E-ADFD-E8-B57-F09267-E.png",
+    area: [23, 69, 54, 11]
+  },
+
+  // PAGE 2
+  {
+    src: "https://i.ibb.co/hJzDBgft/D4-B759-BA-8281-4471-B70-D-5-CBFF8827-A5-D.png",
+    area: [42, 73, 55, 18]
+  },
+
+  // PAGE 3
+  {
+    src: "https://i.ibb.co/sJdkPVrP/C6-D1-B378-35-C4-40-FE-AFA5-9-FB5-A31-F715-B.png",
+    area: [40, 79, 53, 19]
+  },
+
+  // PAGE 4
+  {
+    src: "https://i.ibb.co/qLVQYLZx/5cf316d9-bc96-d86a-cc82-ebde68686ad0.jpg",
+    area: [23, 80, 72, 17]
+  },
+
+  // PAGE 5
+  {
+    src: "https://i.ibb.co/4RT0J31M/80cd6f32-64fb-d2b6-a8c1-c54663d61f6d.jpg",
+    area: [26, 81, 64, 14]
+  },
+
+  // PAGE 6
+  {
+    src: "https://i.ibb.co/DHyLYY86/F761-E3-F1-1-D1-D-40-B1-A574-6-A0-FA359575-B.png",
+    area: [25, 85, 50, 12]
+  },
+
+  // PAGE 7
+  {
+    src: "https://i.ibb.co/nF3Pn9w/F290-A683-8-BDB-41-ED-90-CC-454-B5-C66-CA3-B.png",
+    area: [32, 86, 60, 12]
+  },
+
+  // PAGE 8 - REPLAY
+  {
+    src: "https://i.ibb.co/4nY4J26N/05-FC1-D1-E-F738-42-A6-8-ADF-E2-DD406406-C7.png",
+    area: [31, 88, 44, 10]
+  }
+
+];
+
+let current = 0;
+
+const img = document.getElementById("posterImg");
+const btn = document.getElementById("nextBtn");
+
+function showPage(index) {
+  current = index;
+
+  img.src = pages[current].src;
+
+  const [left, top, width, height] =
+    pages[current].area;
+
+  btn.style.left = left + "%";
+  btn.style.top = top + "%";
+  btn.style.width = width + "%";
+  btn.style.height = height + "%";
+}
+
+btn.addEventListener("click", function() {
+  showPage((current + 1) % pages.length);
+});
+
+showPage(0);
+</script>
+
+</body>
+</html>
